@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreakBuddy - Student Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        header {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 2rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+        nav a {
+            color: #667eea;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #764ba2;
+        }
+        .logout-btn {
+            background: #e74c3c;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .logout-btn:hover {
+            transform: translateY(-2px);
+        }
+        .container {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .tagline {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        .focus-areas h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .focus-areas ul {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+        .focus-areas li {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .habit-section {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .habit-section h3 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .habit-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        .habit-form input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        .habit-form select, .habit-form button {
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .habit-form select {
+            background: #f1f3f5;
+        }
+        .habit-form button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .habit-form button:hover {
+            transform: translateY(-2px);
+        }
+        .habit-list {
+            list-style: none;
+        }
+        .habit-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #e1e5e9;
+        }
+        .habit-item input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: #667eea;
+        }
+        .habit-item span {
+            flex: 1;
+            font-size: 1rem;
+            color: #333;
+        }
+        .habit-item .streak {
+            font-size: 0.9rem;
+            color: #2ecc71;
+        }
+        .progress-container {
+            margin: 1.5rem 0;
+        }
+        .progress-container label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        progress {
+            width: 100%;
+            height: 20px;
+            border-radius: 10px;
+        }
+        progress::-webkit-progress-bar {
+            background: #e1e5e9;
+            border-radius: 10px;
+        }
+        progress::-webkit-progress-value {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+        }
+        .quote {
+            margin-top: 2rem;
+            font-style: italic;
+            color: #666;
+            font-size: 1rem;
+        }
+        footer {
+            background: white;
+            padding: 1rem;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .message.success {
+            color: #2ecc71;
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+            .habit-form {
+                flex-direction: column;
+            }
+            header, footer {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">StreakBuddy</div>
+        <nav>
+            <a href="student.html">Home</a>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <p class="tagline">Your Personalized Habit-Building Dashboard</p>
+        
+        <div class="focus-areas">
+            <h2>Your Focus Areas</h2>
+            <ul id="focusAreasList"></ul>
+        </div>
+        
+        <div class="progress-container">
+            <label>Today's Progress</label>
+            <progress id="progressBar" value="0" max="100"></progress>
+        </div>
+        
+        <div class="habit-section">
+            <h3>Add New Habit</h3>
+            <div class="habit-form">
+                <input type="text" id="habitInput" placeholder="Enter a habit or select one">
+                <select id="focusAreaSelect">
+                    <option value="">Select focus area</option>
+                </select>
+                <select id="suggestedHabits">
+                    <option value="">Select a suggested habit</option>
+                </select>
+                <button onclick="addHabit()">Add</button>
+            </div>
+        </div>
+        
+        <div id="habitSections"></div>
+        
+        <div class="quote" id="motivationalQuote"></div>
+        <div id="message" class="message"></div>
+    </div>
+    
+    <footer>
+        <p>Build better habits with StreakBuddy &copy; 2025</p>
+    </footer>
+
+    <script src="student.js"></script>
+</body>
+</html>
