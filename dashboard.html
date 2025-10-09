@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreakBuddy - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+        .dashboard-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+        .logo {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .tagline {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        .focus-areas h2 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .habit-section {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .habit-section h3 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .habit-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        .habit-form input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        .habit-form button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .habit-form button:hover {
+            transform: translateY(-2px);
+        }
+        .habit-list {
+            list-style: none;
+        }
+        .habit-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #e1e5e9;
+        }
+        .habit-item input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: #667eea;
+        }
+        .habit-item span {
+            flex: 1;
+            font-size: 1rem;
+            color: #333;
+        }
+        .habit-item .streak {
+            font-size: 0.9rem;
+            color: #2ecc71;
+        }
+        .quote {
+            margin-top: 2rem;
+            font-style: italic;
+            color: #666;
+            font-size: 1rem;
+        }
+        .message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .message.success {
+            color: #2ecc71;
+        }
+        @media (max-width: 480px) {
+            .dashboard-container {
+                padding: 1.5rem;
+                margin: 10px;
+            }
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="logo">StreakBuddy</div>
+        <p class="tagline">Your Habit-Building Dashboard</p>
+        
+        <div class="focus-areas">
+            <h2>Your Focus Areas</h2>
+            <ul id="focusAreasList"></ul>
+        </div>
+        
+        <div id="habitSections"></div>
+        
+        <div class="quote" id="motivationalQuote"></div>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="dashboard.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreakBuddy - Onboarding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+        .onboarding-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        .logo {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .tagline {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        .instruction {
+            color: #333;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        .option-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .option-group label {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            color: #333;
+            cursor: pointer;
+        }
+        .option-group input[type="checkbox"] {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            accent-color: #667eea;
+        }
+        .option-desc {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            margin-left: 30px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        .message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .message.success {
+            color: #2ecc71;
+        }
+        @media (max-width: 480px) {
+            .onboarding-container {
+                padding: 1.5rem;
+                margin: 10px;
+            }
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="onboarding-container">
+        <div class="logo">StreakBuddy</div>
+        <p class="tagline">Tell us what you want to focus on to build your habits.</p>
+        
+        <form id="onboardingForm">
+            <p class="instruction">Select exactly 2 focus areas:</p>
+            
+            <div class="option-group">
+                <label>
+                    <input type="checkbox" name="focus" value="daily-routine">
+                    Daily Routine
+                </label>
+                <p class="option-desc">Build consistent schedules for sleep, study, and productivity (e.g., wake up early, time management).</p>
+            </div>
+            
+            <div class="option-group">
+                <label>
+                    <input type="checkbox" name="focus" value="exam-prep">
+                    Entrance Exam Prep
+                </label>
+                <p class="option-desc">Prepare for competitive exams like JEE, NEET, or SAT with study and focus habits.</p>
+            </div>
+            
+            <div class="option-group">
+                <label>
+                    <input type="checkbox" name="focus" value="school-exams">
+                    School/Board Exams
+                </label>
+                <p class="option-desc">Stay on top of schoolwork and board exams (e.g., CBSE, ICSE) with homework and revision habits.</p>
+            </div>
+            
+            <div class="option-group">
+                <label>
+                    <input type="checkbox" name="focus" value="health-wellness">
+                    Health & Wellness
+                </label>
+                <p class="option-desc">Prioritize physical and mental health with habits like exercise, mindfulness, or hydration.</p>
+            </div>
+            
+            <div class="option-group">
+                <label>
+                    <input type="checkbox" name="focus" value="personal-growth">
+                    Personal Growth & Hobbies
+                </label>
+                <p class="option-desc">Grow skills or enjoy hobbies like reading, coding, or creative activities.</p>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn">Get Started</button>
+            
+            <div id="message" class="message"></div>
+        </form>
+    </div>
+    
+    <script src="onboarding.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreakBuddy - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .logo {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .tagline {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+        .forgot-pw, .register-link {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+        .forgot-pw:hover, .register-link:hover {
+            text-decoration: underline;
+        }
+        .error {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        .loading {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">StreakBuddy</div>
+        <p class="tagline">Your Habit-Building Companion</p>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                <div class="error" id="errorMsg">Invalid email or password!</div>
+            </div>
+            
+            <button type="submit" class="login-btn" id="loginBtn">
+                Login
+            </button>
+        </form>
+        
+        <a href="#" class="forgot-pw">Forgot Password?</a>
+        <br>
+        <a href="register.html" class="register-link">Don't have an account? Register</a>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const errorMsg = document.getElementById('errorMsg');
+        const loginBtn = document.getElementById('loginBtn');
+
+        // Demo users (in real app, use Firebase/Auth0)
+        const demoUsers = {
+            'student@example.com': 'password123'
+        };
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            
+            loginBtn.textContent = 'Logging in...';
+            loginBtn.disabled = true;
+            errorMsg.style.display = 'none';
+
+            // Simulate API delay
+            setTimeout(() => {
+                if (demoUsers[email] && demoUsers[email] === password) {
+                    // Save user to localStorage
+                    localStorage.setItem('user', JSON.stringify({ email }));
+                    window.location.href = 'onboarding.html'; // Redirect to onboarding
+                } else {
+                    errorMsg.style.display = 'block';
+                    loginBtn.textContent = 'Login';
+                    loginBtn.disabled = false;
+                }
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
